@@ -1,0 +1,15 @@
+.hisab{
+    background-color: aqua;
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+}
+h2{
+    color: rgb(252, 0, 0);
+}
+h3{
+    color: rgb(26, 165, 33);
+}
+h4{
+    color: blue;
+}
