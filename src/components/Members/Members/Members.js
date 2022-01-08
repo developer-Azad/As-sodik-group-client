@@ -6,7 +6,7 @@ const Members = () => {
     const [members, setMembers] = useState([]);
 
     useEffect( () => {
-        const url = './members.json';
+        const url = 'http://localhost:5000/members';
         fetch(url)
         .then(res => res.json())
         .then(data => setMembers(data))

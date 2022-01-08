@@ -6,7 +6,6 @@ import Banner from '../Banner/Banner';
 const Home = () => {
     return (
         <div>
-            <Navigation></Navigation>
            <Banner></Banner>
            <Members></Members>
         </div>

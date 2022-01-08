@@ -4,12 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import './Member.css'
 
 const Member = (props) => {
-    const {id, img, name, address, date, dPoint} = props.member;
+    const {memberId, img, name} = props.member;
     const navigate = useNavigate();
    
 
     const handleMyHisab = () => {
-        navigate(`/hisab/${id}`);
+        navigate(`/updateHisab/${memberId}`);
     }
 
     return (
@@ -18,7 +18,7 @@ const Member = (props) => {
       <CardHeader
     
         title={name}
-        subheader={id}
+        subheader={memberId}
       />
       <CardMedia
         component="img"
