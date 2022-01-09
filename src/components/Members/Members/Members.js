@@ -11,12 +11,15 @@ const Members = () => {
         .then(res => res.json())
         .then(data => setMembers(data))
     }, [])
+
+    const onlyMembers = members.filter(member => member.status === "member")
+    
     return (
        <Container>
             <h1>members</h1>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12}}>
             {
-                members.map(member => <Member
+                onlyMembers.map(member => <Member
                 key={member.id}
                 member={member}
                 >

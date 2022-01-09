@@ -1,0 +1,39 @@
+.total{
+    background-color: rgb(238, 255, 4);
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.total h1, h2{
+    color: green;
+}
+.totaldue{
+    background-color: rgb(58, 255, 140);
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    width: 100%;
+}
+.totaldue h3 {
+    color: rgb(253, 6, 6);
+    font-size: 30px;
+    margin: 20px;
+}
+.chanda-form{
+    background-color: rgb(4, 255, 58);
+    border: 2px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+}
+.chanda-form input{
+    width: 80%;
+    height: 25px;
+    margin: 2px;
+}
+.submit-btn{
+    color: crimson;
+    font-weight: 700;
+}

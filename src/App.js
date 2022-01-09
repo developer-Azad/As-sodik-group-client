@@ -5,11 +5,12 @@ import MemberHisab from "./components/Members/MemberHisab/MemberHisab";
 import Navigation from "../src/components/Shared/Navigation/Navigation"
 import Members from "./components/Members/Members/Members";
 import AddMember from "./components/Admin/AddMember/AddMember";
+import Footer from "./components/Shared/Footer/Footer";
+import MemberDetails from "./components/Members/MemberDetails/MemberDetails";
 
 
 function App() {
   return (
-
     <div>
       <Navigation></Navigation>
         <Routes>
@@ -23,11 +24,13 @@ function App() {
          </Route>
          <Route path="/updateHisab/:memberId" element={ <AddHisab/> }>
          </Route>
+         <Route path="/details/:memberId" element={ <MemberDetails/> }>
+         </Route>
          <Route path="/hisab/:memberId" element={ <MemberHisab/> }>
          </Route>
       </Routes>
+      <Footer></Footer>
     </div>
-
   );
 }
 

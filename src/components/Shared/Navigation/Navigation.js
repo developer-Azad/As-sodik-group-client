@@ -12,6 +12,7 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { Link } from 'react-router-dom';
+import './Navigation.css'
 
 export default function Navigation() {
   const [auth, setAuth] = React.useState(true);
@@ -57,14 +58,11 @@ export default function Navigation() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Photos
           </Typography>
-          <Link to="/home"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link className='link' to="/home"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Home
           </Typography></Link>
-          <Link to="/addmember"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link className='link' to="/addmember"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Add Member
-          </Typography></Link>
-          <Link to="/updateHisab"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Update Hisab
           </Typography></Link>
           {auth && (
             <div>

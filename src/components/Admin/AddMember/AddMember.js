@@ -13,7 +13,6 @@ const AddMember = () => {
         if(res.data.insertedId){
             alert('added successfully');
             reset();
-
         }
     })
   }
@@ -40,6 +39,8 @@ const AddMember = () => {
       <input {...register("district", { required: true})} placeholder="District"/>
       <br />
       <input {...register("nid", { required: true})} placeholder="Nid Dumber"/>
+      <br />
+      <input {...register("status", { required: true})} placeholder="status: member"/>
       <br />
       <input type="text" {...register("img", { required: false })} placeholder="Image url"/>
       <br />
