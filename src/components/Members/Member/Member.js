@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardMedia, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Member.css'
 
 const Member = (props) => {
@@ -8,7 +8,7 @@ const Member = (props) => {
     const navigate = useNavigate();
    
     const handleMyHisab = () => {
-        navigate(`/updateHisab/${memberId}`);
+        navigate(`/hisab/${memberId}`);
     }
     const handleDetails = () => {
       navigate(`/details/${memberId}`);

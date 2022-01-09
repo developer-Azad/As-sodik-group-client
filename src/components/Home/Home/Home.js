@@ -1,6 +1,5 @@
 import React from 'react';
 import Members from '../../Members/Members/Members';
-import Navigation from '../../Shared/Navigation/Navigation';
 import Banner from '../Banner/Banner';
 
 const Home = () => {

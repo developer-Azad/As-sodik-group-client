@@ -11,10 +11,13 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './Navigation.css'
+import useAuth from '../../../hooks/useAuth';
+import { Button } from '@mui/material';
 
 export default function Navigation() {
+  const {user, logOut} = useAuth();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -64,6 +67,20 @@ export default function Navigation() {
           <Link className='link' to="/addmember"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Add Member
           </Typography></Link>
+          {
+            user?.email ? 
+            <Box>
+          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/makeAdmin">
+          <Button color="inherit">Make Admin</Button>
+          </NavLink>
+          <Button color="inherit">{user.displayName}</Button>
+          <Button onClick={logOut} color="inherit">Log out</Button>
+          </Box>
+            :
+            <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
+          <Button color="inherit">Login</Button>
+          </NavLink>
+          }
           {auth && (
             <div>
               <IconButton

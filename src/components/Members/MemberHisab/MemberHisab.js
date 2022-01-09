@@ -1,12 +1,11 @@
-import { Container, Grid, Rating } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Grid, Rating } from '@mui/material';
+import React from 'react';
+
 import './MemberHisab.css'
 
 const MemberHisab = (props) => {
     const {month, amount, date, dpoint} = props.hisab;
     
-
     return (
   <Grid  item xs={6} sm={6} md={4} lg={3} >
    <div className='hisab'>
