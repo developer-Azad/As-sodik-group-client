@@ -3,9 +3,23 @@
     text-decoration: none;
     /* margin-right: 20px; */
     padding: 10px;
+ 
 }
 .link:hover{
-    color: rgb(252, 248, 2);
+    color: rgb(2, 255, 2);
     background-color:rgba(255, 255, 154, 0.452);
-    padding: 16px 10px;
+    padding: 22px 10px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .link-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .link:hover{
+        color: rgb(2, 255, 2);
+        background-color:rgba(255, 255, 154, 0.452);
+        padding: 10px 10px;
+    }
 }

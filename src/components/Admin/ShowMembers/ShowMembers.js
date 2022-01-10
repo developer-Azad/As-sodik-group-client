@@ -1,10 +1,8 @@
 import { Card, CardContent, CardHeader, CardMedia, Grid, Rating, Typography } from '@mui/material';
 import React from 'react';
-import { useNavigate} from 'react-router-dom';
-import './Member.css'
+import { useNavigate } from 'react-router-dom';
 
-const Member = (props) => {
-
+const ShowMembers = (props) => {
     const {memberId, img, name} = props.member;
     const navigate = useNavigate();
    
@@ -41,4 +39,4 @@ const Member = (props) => {
     );
 };
 
-export default Member;
+export default ShowMembers;

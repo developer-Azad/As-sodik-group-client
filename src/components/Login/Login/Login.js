@@ -3,10 +3,11 @@ import React, {useState} from 'react';
 // import login from '../../../images/login.png';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import useAuth from './../../../hooks/useAuth';
 
 const Login = () => {
+    const memberId = useParams();
     const [loginData, setLoginData] = useState({});
     const {user, loginUser, isLoading, authError, signInWithGoogle} = useAuth();
 

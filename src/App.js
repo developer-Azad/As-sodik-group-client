@@ -32,17 +32,22 @@ function App() {
          </Route>
          <Route exact path="/register" element={ <Register/> }>
          </Route>
+        
          <Route path="/addmember" element={ <AdminRoute>
           <AddMember/>
          </AdminRoute> }>
          </Route>
          <Route path="/member" element={ <Members/> }>
          </Route>
-         <Route path="/updateHisab/:memberId" element={ <AddHisab/> }>
+         <Route path="/updateHisab" element={ <AdminRoute>
+          <AddHisab/>
+         </AdminRoute> }>
          </Route>
          <Route path="/details/:memberId" element={ <MemberDetails/> }>
          </Route>
-         <Route path="/hisab/:memberId" element={ <MembersHisab/> }>
+         <Route path="/hisab/:memberId" element={ <PrivateRoute>
+          <MembersHisab/>
+         </PrivateRoute> }>
          </Route>
       </Routes>
       <Footer></Footer>

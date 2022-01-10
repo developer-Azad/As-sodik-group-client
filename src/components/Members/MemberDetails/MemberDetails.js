@@ -1,10 +1,46 @@
-import React from 'react';
+import { Container, Grid, Rating } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import './MemberDetails.css'
 
 const MemberDetails = () => {
+    const memberId = useParams();
+    const [members, setMembers] = useState([]);
+
+    useEffect( () => {
+        const url = 'http://localhost:5000/members';
+        fetch(url)
+        .then(res => res.json())
+        .then(data => setMembers(data))
+    }, [])
+
+    const onlyMembers = members.filter(member => member.status === "member");
+    const memberDetail = onlyMembers.find(memberDetail => memberDetail.memberId === memberId.memberId);
+    
     return (
-        <div>
-            <h4>details</h4>
-        </div>
+        <Container>
+             <Grid container spacing={3}>
+             <Grid item xs={12} sm={12} md={6} lg={8} >
+              <div className='details'>
+              <h1 className='id'>Member Id : {memberDetail?.memberId}</h1>
+              <h1>{memberDetail?.name}</h1>
+              <h4>Village : {memberDetail?.village}</h4>
+              <h4>post : {memberDetail?.post}</h4>
+              <h4>Upazila : {memberDetail?.upazila}</h4>
+              <h4>District : {memberDetail?.district}</h4>
+              <h4>Admit Date : {memberDetail?.admitDate}</h4>
+              
+              <Rating name="half-rating-read" defaultValue={memberDetail?.dpoint} precision={0.5} readOnly />
+              </div>
+          </Grid>
+           <Grid item xs={12} sm={12} md={6} lg={4} >
+             <div>
+                 <img src={memberDetail?.img} alt="" />
+             </div>
+          </Grid>
+          </Grid>
+            
+        </Container>
     );
 };
 

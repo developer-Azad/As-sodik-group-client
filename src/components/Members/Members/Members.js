@@ -16,7 +16,7 @@ const Members = () => {
     
     return (
        <Container>
-            <h1>members</h1>
+            <h1 className='title'>Our Honourable Members : {onlyMembers.length}</h1>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12}}>
             {
                 onlyMembers.map(member => <Member

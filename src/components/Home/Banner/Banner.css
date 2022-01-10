@@ -1,0 +1,26 @@
+.name{
+    text-align: center;
+    background-color: yellow;
+    color: red;
+    font-size: 40px;
+    /* padding: 30px; */
+}
+.title{
+    font-size: 30px;
+    color:blue;
+    text-align: center;
+}
+.banner-bg{
+    background-color: yellow;
+    margin-top: 20px;
+}
+.total{
+    width: 90%;
+    background-color: rgb(47, 231, 255);
+    text-align: center;
+    padding: 10px;
+    border: 2px solid blue;
+    border-radius: 20px;
+    font-size: 15px;
+    margin-top: 10px;
+}

@@ -29,16 +29,16 @@ const totalDue = 13000 - totalAmount;
     return (
         <Container>
              <Grid container spacing={3}>
-             <Grid item xs={12} sm={12} md={6} lg={6} >
-              <div className='total'>
+             <Grid item xs={12} sm={12} md={6} lg={8} >
+              <div className='totalHisab'>
               <h2>Member Id : {}</h2>
               <h1>Name: {}</h1>
               <h3>Address : {}</h3>
               <Rating name="half-rating-read" defaultValue={3} precision={0.5} readOnly />
               </div>
           </Grid>
-           <Grid item xs={12} sm={12} md={6} lg={6} >
-              <div className='total'>
+           <Grid item xs={12} sm={12} md={6} lg={4} >
+              <div className='totalAmount'>
               <h2>Total Deposited Amount</h2>
               <h1>{totalAmount}</h1>
               </div>
