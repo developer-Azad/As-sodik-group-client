@@ -15,14 +15,25 @@ const MembersHisab = () => {
     .then(data => setAllChanda(data))
 }, [])
 
+const onlyMembers = allChanda.filter(member => member.status === "member");
+const member = onlyMembers.find(memberDetail => memberDetail.memberId === memberId.memberId);
+
 const memberHisab = allChanda.filter(chanda => chanda.memberId === memberId.memberId);
 const memberHisab2 = memberHisab.filter(chada => chada.amount > 0);
 const totalHisab = memberHisab2.map(allHisab => allHisab.amount);
+const allPoint = memberHisab2.map(allHisab => allHisab.dpoint);
 
 let totalAmount = 0;
 for(let i = 0; i < totalHisab.length; i++){
   totalAmount = parseInt(totalAmount) + parseInt(totalHisab[i]);
 }
+
+let totalPoint = 0;
+for(let i = 0; i < allPoint.length; i++){
+  totalPoint = parseInt(totalPoint) + parseInt(allPoint[i]);
+}
+
+let avgPoint = totalPoint/allPoint.length;
 
 // total due
 const totalDue = 13000 - totalAmount;
@@ -32,20 +43,20 @@ const totalDue = 13000 - totalAmount;
              <Grid container spacing={3}>
              <Grid item xs={12} sm={12} md={6} lg={8} >
               <div className='totalHisab'>
-              <h2>Member Id : {}</h2>
-              <h1>Name: {}</h1>
+              <h2>Member Id : {member?.memberId}</h2>
+              <h1>{member?.name}</h1>
               <h3>Address : {}</h3>
-              <Rating name="half-rating-read" defaultValue={3} precision={0.5} readOnly />
+              <Rating name="half-rating-read" defaultValue={avgPoint} precision={0.5} readOnly />
               </div>
           </Grid>
            <Grid item xs={12} sm={12} md={6} lg={4} >
               <div className='totalAmount'>
               <h2>Total Deposited Amount</h2>
-              <h1>{totalAmount}</h1>
+              <h1>{totalAmount}/-</h1>
               </div>
               <div className='totaldue'>
               <h3>Total Due Amount</h3>
-              <h3>{totalDue}</h3>
+              <h3>{totalDue}/-</h3>
               </div>
           </Grid>
           </Grid>

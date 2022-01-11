@@ -16,6 +16,27 @@ const MemberDetails = () => {
 
     const onlyMembers = members.filter(member => member.status === "member");
     const memberDetail = onlyMembers.find(memberDetail => memberDetail.memberId === memberId.memberId);
+
+    const memberHisab = members.filter(chanda => chanda.memberId === memberId.memberId);
+const memberHisab2 = memberHisab.filter(chada => chada.amount > 0);
+const totalHisab = memberHisab2.map(allHisab => allHisab.amount);
+const allPoint = memberHisab2.map(allHisab => allHisab.dpoint);
+
+let totalAmount = 0;
+for(let i = 0; i < totalHisab.length; i++){
+  totalAmount = parseInt(totalAmount) + parseInt(totalHisab[i]);
+}
+
+let totalPoint = 0;
+for(let i = 0; i < allPoint.length; i++){
+  totalPoint = parseInt(totalPoint) + parseInt(allPoint[i]);
+}
+
+let avgPoint = totalPoint/allPoint.length;
+
+// total due
+const totalDue = 13000 - totalAmount;
+
     
     return (
         <Container>
@@ -30,7 +51,7 @@ const MemberDetails = () => {
               <h4>District : {memberDetail?.district}</h4>
               <h4>Admit Date : {memberDetail?.admitDate}</h4>
               
-              <Rating name="half-rating-read" defaultValue={memberDetail?.dpoint} precision={0.5} readOnly />
+              <Rating name="half-rating-read" defaultValue={avgPoint} precision={0.5} readOnly />
               </div>
           </Grid>
            <Grid item xs={12} sm={12} md={6} lg={4} >
