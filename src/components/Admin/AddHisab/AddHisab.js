@@ -14,7 +14,7 @@ const AddHisab = () => {
 
 
   useEffect( () => {
-    const url = `http://localhost:5000/members`;
+    const url = `https://vast-falls-30243.herokuapp.com/members`;
     fetch(url)
     .then(res => res.json())
     .then(data => setAllChanda(data))
@@ -34,7 +34,7 @@ const totalDue = 13000 - totalAmount;
 
   const onSubmit = data => {
     console.log(data);
-    axios.post('http://localhost:5000/members', data)
+    axios.post('https://vast-falls-30243.herokuapp.com/members', data)
     .then(res => {
         if(res.data.insertedId){
             alert('added successfully');

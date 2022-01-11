@@ -8,7 +8,7 @@ const MemberDetails = () => {
     const [members, setMembers] = useState([]);
 
     useEffect( () => {
-        const url = 'http://localhost:5000/members';
+        const url = 'https://vast-falls-30243.herokuapp.com/members';
         fetch(url)
         .then(res => res.json())
         .then(data => setMembers(data))

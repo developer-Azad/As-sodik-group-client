@@ -9,14 +9,15 @@ const MembersHisab = () => {
 
 
   useEffect( () => {
-    const url = `http://localhost:5000/members`;
+    const url = `https://vast-falls-30243.herokuapp.com/members`;
     fetch(url)
     .then(res => res.json())
     .then(data => setAllChanda(data))
 }, [])
 
 const memberHisab = allChanda.filter(chanda => chanda.memberId === memberId.memberId);
-const totalHisab = memberHisab.slice(1,memberHisab.length).map(allHisab => allHisab.amount);
+const memberHisab2 = memberHisab.filter(chada => chada.amount > 0);
+const totalHisab = memberHisab2.map(allHisab => allHisab.amount);
 
 let totalAmount = 0;
 for(let i = 0; i < totalHisab.length; i++){

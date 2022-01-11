@@ -1,15 +1,15 @@
-import { Container, Grid } from '@mui/material';
+import { Container } from '@mui/material';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import ShowMembers from '../ShowMembers/ShowMembers';
+
 
 const AddMember = () => {
     const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = data => {
     console.log(data);
-    axios.post('http://localhost:5000/members', data)
+    axios.post('https://vast-falls-30243.herokuapp.com/members', data)
     .then(res => {
         if(res.data.insertedId){
             alert('added successfully');
@@ -20,8 +20,8 @@ const AddMember = () => {
 
     return (
         <Container>
-            <div className="service-form">
-            <h2 className="text-4xl font-bold text-danger">Add service</h2>
+            <div className="chanda-form">
+            <h2 className="text-4xl font-bold text-danger">Add A New Member</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
       <input {...register("memberId", { required: true})} placeholder="Member Id"/>
       <br />
@@ -45,7 +45,7 @@ const AddMember = () => {
       <br />
       <input type="text" {...register("img", { required: false })} placeholder="Image url"/>
       <br />
-      <input className="confirm-btn submit-field" type="submit" />
+      <input className="confirm-btn submit-field" style={{width: "40%"}} type="submit" />
     </form>
             </div>
         </Container>
