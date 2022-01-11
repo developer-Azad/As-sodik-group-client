@@ -33,7 +33,7 @@ for(let i = 0; i < allPoint.length; i++){
   totalPoint = parseInt(totalPoint) + parseInt(allPoint[i]);
 }
 
-let avgPoint = totalPoint/allPoint.length;
+const avgPoint = totalPoint/allPoint.length;
 
 // total due
 const totalDue = 13000 - totalAmount;
@@ -45,7 +45,7 @@ const totalDue = 13000 - totalAmount;
               <div className='totalHisab'>
               <h2>Member Id : {member?.memberId}</h2>
               <h1>{member?.name}</h1>
-              <h3>Address : {}</h3>
+              <h3>Address : {avgPoint}</h3>
               <Rating name="half-rating-read" defaultValue={avgPoint} precision={0.5} readOnly />
               </div>
           </Grid>
