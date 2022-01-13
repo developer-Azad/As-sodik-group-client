@@ -12,7 +12,10 @@ const Members = () => {
         .then(data => setMembers(data))
     }, [])
 
-    const onlyMembers = members.filter(member => member.status === "member")
+
+    const onlyMembers = members.filter(member => member.status === "member");
+    onlyMembers.sort((a, b) => parseInt(a.memberId) - parseInt(b.memberId));
+    // onlyMembers.reverse();
     
     return (
        <Container>
