@@ -34,7 +34,7 @@ const Member = (props) => {
         <Rating name="half-rating-read" defaultValue={2.5} precision={0.5} readOnly />
         </Typography>
       </CardContent>
-      <button className="d-btn" onClick={handleDetails}>Details</button>
+      <button className="h-btn" onClick={handleDetails}>Details</button>
             <button className="h-btn" onClick={handleMyHisab}>My Hisab</button>
     </Card>
     </Grid>

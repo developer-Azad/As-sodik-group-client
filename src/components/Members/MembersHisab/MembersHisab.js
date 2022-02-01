@@ -19,6 +19,7 @@ const onlyMembers = allChanda.filter(member => member.status === "member");
 const member = onlyMembers.find(memberDetail => memberDetail.memberId === memberId.memberId);
 
 const memberHisab = allChanda.filter(chanda => chanda.memberId === memberId.memberId);
+      // memberHisab.sort((a, b) => parseInt(a.date) - parseInt(b.date));
 const memberHisab2 = memberHisab.filter(chada => chada.amount > 0);
 const totalHisab = memberHisab2.map(allHisab => allHisab.amount);
 const allPoint = memberHisab2.map(allHisab => allHisab.dpoint);

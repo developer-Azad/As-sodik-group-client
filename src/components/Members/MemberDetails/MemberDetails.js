@@ -1,4 +1,4 @@
-import { Container, Grid, Rating } from '@mui/material';
+import {Container, Grid, Rating } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './MemberDetails.css'
@@ -37,6 +37,24 @@ let avgPoint = totalPoint/allPoint.length;
 // total due
 const totalDue = 13000 - totalAmount;
 
+ //delete operation
+ const handleRemove = memberId => {
+  const url = `https://vast-falls-30243.herokuapp.com/members/${memberId}`;
+  fetch(url, {
+      method: 'DELETE'
+  })
+  .then(res => res.json())
+  .then(data => {
+      if(data.deletedCount) {
+          alert('deleted order')
+          // const restOrder = orders.filter(member => member.memberId !== id);
+          // setOrders(restOrder);
+          window.location.reload();
+      }
+      
+  })
+}
+
     
     return (
         <Container>
@@ -50,8 +68,9 @@ const totalDue = 13000 - totalAmount;
               <h4>Upazila : {memberDetail?.upazila}</h4>
               <h4>District : {memberDetail?.district}</h4>
               <h4>Admit Date : {memberDetail?.admitDate}</h4>
-              
               <Rating name="half-rating-read" defaultValue={avgPoint} precision={0.5} readOnly />
+              <br />
+              <button className="r-btn" onClick={() => handleRemove(memberDetail.memberId)}>Remove</button>
               </div>
           </Grid>
            <Grid item xs={12} sm={12} md={6} lg={4} >
@@ -60,7 +79,6 @@ const totalDue = 13000 - totalAmount;
              </div>
           </Grid>
           </Grid>
-            
         </Container>
     );
 };

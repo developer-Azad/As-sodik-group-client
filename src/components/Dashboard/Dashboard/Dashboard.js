@@ -1,8 +1,8 @@
 import  React from 'react';
 import PropTypes from 'prop-types';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import MailIcon from '@material-ui/icons/Mail';
+// import MenuIcon from '@material-ui/icons/Menu';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { AppBar, Button, CssBaseline, Divider, Drawer, IconButton,
@@ -31,7 +31,7 @@ const Dashboard = (props) => {
         <Divider />
         <Link to="/home"><Button color="inherit">Home</Button></Link>
         <br />
-        <Link to="/appointment"><Button color="inherit">Appointment</Button></Link>
+        <Link to="/dboardHome"><Button color="inherit">All Members</Button></Link>
         <Link to="/dashboard"><Button color="inherit">Dahsboard</Button></Link>
         {
           admin && <Box>
@@ -42,9 +42,9 @@ const Dashboard = (props) => {
         <List>
           {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>
+              {/* <ListItemIcon>
                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
+              </ListItemIcon> */}
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -72,7 +72,7 @@ const Dashboard = (props) => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
-            <MenuIcon />
+            {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             Dashboard
@@ -116,7 +116,9 @@ const Dashboard = (props) => {
       >
         <Toolbar />
 
-       <Outlet></Outlet>
+       <Outlet>
+         
+       </Outlet>
       
       </Box>
     </Box>

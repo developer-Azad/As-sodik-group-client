@@ -59,6 +59,9 @@ export default function Navigation() {
           <NavLink style={{textDecoration: 'none', color: 'white'}} to="/makeAdmin">
           <Button color="inherit">Make Admin</Button>
           </NavLink>
+          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/dashboard">
+          <Button color="inherit">Dashboard</Button>
+          </NavLink>
           <Button onClick={logOut} color="inherit">Log out</Button>
           </>
             :

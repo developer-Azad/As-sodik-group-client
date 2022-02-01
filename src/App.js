@@ -13,6 +13,8 @@ import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 import MembersHisab from "./components/Members/MembersHisab/MembersHisab";
 import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 import AdminRoute from "./components/Login/AdminRoute/AdminRoute";
+import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
+import DashboardHome from "./components/Dashboard/DashboardHome/DashboardHome";
 
 function App() {
   return (
@@ -41,6 +43,14 @@ function App() {
          </Route>
          <Route path="/updateHisab" element={ <AdminRoute>
           <AddHisab/>
+         </AdminRoute> }>
+         </Route>
+         <Route path="/dashboard" element={ <AdminRoute>
+          <Dashboard/>
+         </AdminRoute> }>
+           </Route>
+         <Route path="/dboardHome" element={ <AdminRoute>
+          <DashboardHome/>
          </AdminRoute> }>
          </Route>
          <Route path="/details/:memberId" element={ <MemberDetails/> }>
