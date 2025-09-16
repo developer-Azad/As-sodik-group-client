@@ -1,8 +1,8 @@
 import { Container, Grid } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import Member from '../Member/Member';
+import MemberShow from '../Member for admin/MemberShow/MemberShow';
 
-const Members = () => {
+const MembersShow = () => {
     const [members, setMembers] = useState([]);
 
     useEffect( () => {
@@ -22,15 +22,15 @@ const Members = () => {
             <h1 className='title'>Our Honourable Members : {onlyMembers.length}</h1>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12}}>
             {
-                onlyMembers.map(member => <Member
+                onlyMembers.map(member => <MemberShow
                 key={member.id}
                 member={member}
                 >
-                </Member>)
+                </MemberShow>)
             }
         </Grid>
        </Container>
     );
 };
 
-export default Members;
+export default MembersShow;

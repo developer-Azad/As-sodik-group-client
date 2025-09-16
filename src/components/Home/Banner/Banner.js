@@ -7,9 +7,8 @@ import './Banner.css'
 const Banner = () => {
     const [allChanda, setAllChanda] = useState([]);
 
-
   useEffect( () => {
-    const url = `https://vast-falls-30243.herokuapp.com/members`;
+    const url = `http://localhost:5000/members`;
     fetch(url)
     .then(res => res.json())
     .then(data => setAllChanda(data))
@@ -23,24 +22,33 @@ for(let i = 0; i < totalHisab.length; i++){
   totalAmount = parseInt(totalAmount) + parseInt(totalHisab[i]);
 }
     return (
-       <div className='banner-bg'>
-            <Grid  container spacing={3}>
-          <Grid item xs={12} sm={12} md={8} lg={9} >
-          <div className='name'>
+       <div className='bg-color'>
+          <Grid  container spacing={1}>
+            <Grid item xs={12} sm={12} md={8} lg={2}>
+              <div>
+                <img src={image} alt="Girl in a jacket" width="300" height="400"/>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={8} lg={8} >
+              <div className='name'>
                 <h1 >AS-SODIK GROUP</h1>
-                <h3>Dhaka, Bangladesh</h3>
-                </div>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} lg={3} >
+                <h4>Dhaka, Bangladesh</h4>
+                <h3>A Land Business Platform</h3>
+              </div>
+              <div className='name'>
+                <h3>We Are Ensuring A Safe Pention System</h3>
+              </div>
+            </Grid>
+            <Grid item xs={12} sm={12} md={4} lg={2}>
               <div className='total'>
-              <h2>Total Deposited Amount</h2>
-              <h1>{totalAmount}/-</h1>
+                <h2>Total Deposited Amount</h2>
+                <h1>{totalAmount}/-</h1>
               </div>
               <div className='total'>
-              <h3>Last Deposited Amount</h3>
-              <h3>{}/-</h3>
+                <h3>Last Deposited Amount</h3>
+                <h3>{}/-</h3>
               </div>
-          </Grid>
+            </Grid>
           </Grid>
        </div>
     );

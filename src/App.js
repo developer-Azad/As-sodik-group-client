@@ -15,6 +15,7 @@ import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 import AdminRoute from "./components/Login/AdminRoute/AdminRoute";
 import Dashboard from "./components/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./components/Dashboard/DashboardHome/DashboardHome";
+import MembersShow from "./components/Members/Member for admin/MembersShow";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
          </Route>
          <Route exact path="/" element={ <Home/> }>
          </Route>
+         {/* <Route exact path="/aboutus" element={ <AboutUs/> }> */}
+         {/* </Route> */}
          <Route exact path="/makeAdmin" element={ <AdminRoute>
           <MakeAdmin/>
          </AdminRoute> }>
@@ -48,6 +51,14 @@ function App() {
          <Route path="/dashboard" element={ <AdminRoute>
           <Dashboard/>
          </AdminRoute> }>
+         </Route>
+         <Route path="/membersShow" element={ <AdminRoute>
+          <MembersShow/>
+          </AdminRoute>}>
+          </Route>
+         <Route path="/userDashboard" element={ <PrivateRoute>
+          <Dashboard/>
+         </PrivateRoute> }>
            </Route>
          <Route path="/dboardHome" element={ <AdminRoute>
           <DashboardHome/>

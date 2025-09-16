@@ -1,24 +1,29 @@
 import * as React from 'react';
+import {useEffect, useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import img from '../../images/Gold Luxury Business Logo (1).png'
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-
-
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { Link, NavLink } from 'react-router-dom';
-import './Navigation.css'
+import { Link} from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
+import './Navigation.css'
 
 export default function Navigation() {
   const {user, logOut} = useAuth();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [users, setUsers] = useState([]);
+  const userEmail = user.email;
+
+// user role (admin) finding
+  const currentUser = users.filter(member => member.email === userEmail)
+  const currentUserObject = currentUser[0];
+  const currentUserRole = currentUserObject?.role;
+  console.log("cu ", currentUserRole);
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,13 +33,21 @@ export default function Navigation() {
     setAnchorEl(null);
   };
 
+  // users data loading from database
+  useEffect(() => {
+    const url = `http://localhost:5000/users`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => setUsers(data))
+  }, [])
+  
+
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <FormGroup>
-       
-      </FormGroup>
+    <Box>
       <AppBar position="static">
-        <Toolbar>
+        <Grid className="navbar link-container">
+          <Grid item xs={12} sm={12} md={8} lg={2} className="nav-icons">
           <IconButton
             size="large"
             edge="start"
@@ -42,37 +55,50 @@ export default function Navigation() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Link className='link' to="/home"><Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            ASG
-          </Typography></Link>
-          
-          <div className='link-container'>
+          <MenuIcon />
+          </IconButton> 
+          <Link className='' to="/home">
+            <img className='nav-icon' src={img} alt="" />
+          </Link>
+          </Grid>
+          <Grid item xs={12} sm={12} md={8} lg={10}>
+
+          <div>
           <Link className='link' to="/home">Home</Link>
-          <Link className='link' to="/addmember">Add Member</Link>
-          <Link className='link' to="/updateHisab">Update Hisab</Link>
-          
+          <Link className='link' to="/about">About Us</Link>
+          <Link className='link' to="/">Contact</Link>
           {
-            user?.email ? 
-            <>
-          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/makeAdmin">
-          <Button color="inherit">Make Admin</Button>
-          </NavLink>
-          <NavLink style={{textDecoration: 'none', color: 'white'}} to="/dashboard">
-          <Button color="inherit">Dashboard</Button>
-          </NavLink>
-          <Button onClick={logOut} color="inherit">Log out</Button>
+            // Only for admin
+            currentUserObject?.role?
+          <>
+          <Link className='link' to="/addmember">Add Member</Link>
+          <Link className='link' to="/hisab/:memberId">All Members</Link>
+          <Link className='link' to="/updateHisab">Update Hisab</Link>
+          <Link className='link' to="/makeAdmin">Make Admin</Link>
+          <Link className='link' to="/dashboard">Dashboard</Link>
+          <Link className='link' to="/" style={{ color: 'black', fontWeight: 700}}>{ user.displayName}</Link>
+          <Link className='link' to="/home" onClick={logOut}>Log out</Link>
           </>
             :
-            <NavLink style={{textDecoration: 'none', color: 'white'}} to="/login">
+            // For registerd user
+              user?.email?
+              <>
+              <Link className='link' to="/userDashboard">Dashboard</Link>
+              <Link className='link' to="/">My Account</Link>
+              <Link className='link' to="/" style={{ color: 'black', fontWeight: 700 }}>{ user.displayName}</Link>
+              <Link className='link' to="/home" onClick={logOut}>Log out</Link>
+              </>
+              :
+          <>
+          <Link style={{textDecoration: 'none', color: 'white'}} to="/login">
           <Button color="inherit">Login</Button>
-          </NavLink>
-          }
+          </Link>
+          </>
+            }
           </div>
+          </Grid>
           {auth && (
             <div>
-            
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -93,7 +119,7 @@ export default function Navigation() {
               </Menu>
             </div>
           )}
-        </Toolbar>
+        </Grid>
       </AppBar>
     </Box>
   );

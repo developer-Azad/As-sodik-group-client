@@ -1,10 +1,15 @@
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Item } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useParams } from 'react-router-dom';
 import MemberHisab from '../../Members/MemberHisab/MemberHisab';
-import './AddHisab.css'
+import './AddHisab.css';
+
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 const AddHisab = () => {
   const memberId = useParams();
@@ -14,7 +19,7 @@ const AddHisab = () => {
 
 
   useEffect( () => {
-    const url = `https://vast-falls-30243.herokuapp.com/members`;
+    const url = `http://localhost:5000/deposits`;
     fetch(url)
     .then(res => res.json())
     .then(data => setAllChanda(data))
@@ -34,7 +39,7 @@ const totalDue = 13000 - totalAmount;
 
   const onSubmit = data => {
     console.log(data);
-    axios.post('https://vast-falls-30243.herokuapp.com/members', data)
+    axios.post('http://localhost:5000/deposits', data)
     .then(res => {
         if(res.data.insertedId){
             alert('added successfully');
@@ -42,6 +47,8 @@ const totalDue = 13000 - totalAmount;
         }
     })
   }
+
+    
 
     return (
         <Container sx={{marginTop: '30px'}}>
@@ -76,6 +83,8 @@ const totalDue = 13000 - totalAmount;
               </div>
           </Grid>
           </Grid>
+
+          
             
             <h1>My Hisab</h1>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 12, sm: 12, md: 12, lg: 12}}>

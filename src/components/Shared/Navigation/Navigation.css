@@ -1,3 +1,13 @@
+.navbar{
+    background-color: #fdb314;
+    display: flex;
+}
+.link-container{
+    /* padding-top: 7px;
+     */
+    justify-content: center;
+    align-items: center;
+}
 .link{
     color: white;
     text-decoration: none;
@@ -6,10 +16,20 @@
  
 }
 .link:hover{
-    color: rgb(2, 255, 2);
+    color: black;
     background-color:rgba(255, 255, 154, 0.452);
-    padding: 22px 10px;
+    padding: 15px 10px;
 }
+.nav-icon{
+    height: 30px;
+    border-radius: 50%;
+    margin-bottom: -6%;
+    margin-left: -5%;
+}
+.nav-icons{
+    padding-left: 20px;
+}
+
 
 
 @media screen and (max-width: 600px) {

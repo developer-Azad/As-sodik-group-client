@@ -1,14 +1,19 @@
 import {Container, Grid, Rating } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './MemberDetails.css'
 
 const MemberDetails = () => {
     const memberId = useParams();
     const [members, setMembers] = useState([]);
+    const navigate = useNavigate();
+   
+    const handleMyHisab = () => {
+        navigate(`/hisab/${memberId.memberId}`);
+    }
 
     useEffect( () => {
-        const url = 'https://vast-falls-30243.herokuapp.com/members';
+        const url = 'http://localhost:5000/members';
         fetch(url)
         .then(res => res.json())
         .then(data => setMembers(data))
@@ -37,9 +42,9 @@ let avgPoint = totalPoint/allPoint.length;
 // total due
 const totalDue = 13000 - totalAmount;
 
- //delete operation
+ //member delete operation
  const handleRemove = memberId => {
-  const url = `https://vast-falls-30243.herokuapp.com/members/${memberId}`;
+  const url = `http://localhost:5000/members/${memberId}`;
   fetch(url, {
       method: 'DELETE'
   })
@@ -58,24 +63,25 @@ const totalDue = 13000 - totalAmount;
     
     return (
         <Container>
+            <h1>Member Details</h1>
              <Grid container spacing={3}>
              <Grid item xs={12} sm={12} md={6} lg={8} >
               <div className='details'>
-              <h1 className='id'>Member Id : {memberDetail?.memberId}</h1>
-              <h1>{memberDetail?.name}</h1>
+              <h2>Member Id : {memberDetail?.memberId}</h2>
+              <h1 className='member-name'>{memberDetail?.name}</h1>
               <h4>Village : {memberDetail?.village}</h4>
-              <h4>post : {memberDetail?.post}</h4>
+              <h4>Post : {memberDetail?.post}</h4>
               <h4>Upazila : {memberDetail?.upazila}</h4>
               <h4>District : {memberDetail?.district}</h4>
               <h4>Admit Date : {memberDetail?.admitDate}</h4>
               <Rating name="half-rating-read" defaultValue={avgPoint} precision={0.5} readOnly />
               <br />
-              <button className="r-btn" onClick={() => handleRemove(memberDetail.memberId)}>Remove</button>
+              {/* <button className="btn bg-color" onClick={handleMyHisab}>My Hisab</button> */}
               </div>
           </Grid>
            <Grid item xs={12} sm={12} md={6} lg={4} >
-             <div>
-                 <img src={memberDetail?.img} alt="" />
+             <div >
+                 <img className='details-img' src={memberDetail?.img} alt="" />
              </div>
           </Grid>
           </Grid>

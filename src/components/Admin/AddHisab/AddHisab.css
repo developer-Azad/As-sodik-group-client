@@ -11,7 +11,7 @@
     color: green;
 }
 .totalAmount{
-    background-color: rgb(252, 255, 58);
+    /* background-color: rgb(252, 255, 58); */
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
 }
 .totaldue{
-    background-color: rgb(252, 255, 58);
+    /* background-color: rgb(230, 230, 230); */
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;
@@ -31,7 +31,7 @@
     margin: 20px;
 }
 .chanda-form{
-    background-color: rgb(4, 255, 58);
+    background-color: rgb(238, 240, 238);
     border: 2px solid black;
     border-radius: 10px;
     text-align: center;

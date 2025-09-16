@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigate} from 'react-router-dom';
 import './Member.css'
 
-const Member = (props) => {
+const MemberShow = (props) => {
 
     const {memberId, img, name} = props.member;
     const navigate = useNavigate();
@@ -36,11 +36,11 @@ const Member = (props) => {
               </CardContent>
               <div className='card-btns'>
                 <button className='btn bg-color' onClick={handleDetails}>Details</button>
-                {/* <button className="btn bg-color" onClick={handleMyHisab}>My Hisab</button> */}
+                <button className="btn bg-color" onClick={handleMyHisab}>Hisab</button>
               </div>
             </Card>
           </Grid>
         );
       };
 
-export default Member;
+export default MemberShow;

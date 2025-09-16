@@ -26,7 +26,9 @@ const Dashboard = (props) => {
     };
   
     const drawer = (
-      <div>
+
+      <div style={{marginLeft:'5%'}}>
+        
         <Toolbar />
         <Divider />
         <Link to="/home"><Button color="inherit">Home</Button></Link>
@@ -35,8 +37,9 @@ const Dashboard = (props) => {
         <Link to="/dashboard"><Button color="inherit">Dahsboard</Button></Link>
         {
           admin && <Box>
-            <Link to={`/dashboard/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-        <Link to={`/dashboard/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
+            <Link to={`/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
+        <Link to={`/addmember`}><Button color="inherit">Add Member</Button></Link>
+        <Link to={`/updateHisab`}><Button color="inherit">Update Hisab</Button></Link>
           </Box>
         }
         <List>
@@ -77,6 +80,7 @@ const Dashboard = (props) => {
           <Typography variant="h6" noWrap component="div">
             Dashboard
           </Typography>
+
         </Toolbar>
       </AppBar>
       <Box

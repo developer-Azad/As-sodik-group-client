@@ -5,7 +5,8 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = data => {
-      fetch('https://vast-falls-30243.herokuapp.com/users/admin', {
+    // alert('Admin added successfully.')
+      fetch('http://localhost:5000/users/admin', {
         method: 'PUT',
         headers: {
             'content-type': 'application/json'
@@ -16,13 +17,13 @@ const MakeAdmin = () => {
   }
 
     return (
-        <div className="service-form">
-            <h2>Make an Admin</h2>
+        <div className="chanda-form">
+            <h2>Make an new Admin</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
    
       <input {...register("email", { required: true, maxLength: 50 })} placeholder="Your email"/>
       <br />
-      <button  className="submit-btn"> <input type="submit" /></button>
+      <input  style={{width:'10%'}} type="submit" />
     </form>
         </div>
     );

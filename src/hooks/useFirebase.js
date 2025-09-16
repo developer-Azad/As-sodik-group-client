@@ -19,6 +19,7 @@ const useFirebase = () => {
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
 
+//-----------------user Registration--------------------
 
     const registerUser = (email, password, name, navigate) => {
       setIsLoading(true);  
@@ -28,7 +29,7 @@ const useFirebase = () => {
             const newUser = {email, displayName: name};
             setUser(newUser);
             //save user to database
-            saveUser(email, name, 'POST');
+            saveUser(email, password, name, 'POST');
 
             //set name to firebase
             updateProfile(auth.currentUser, {
@@ -46,12 +47,14 @@ const useFirebase = () => {
           .finally (() => setIsLoading(false));
     }
 
-    const loginUser = (email, password, location, navigate) => {
+    //-----------------user Login--------------------
+
+    const loginUser = (email, password, location, history) => {
       setIsLoading(true);  
         signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-    const destination = location?.state?.from || '/';
-    navigate(destination);
+    const destination = location?.state?.from || '/dashboard';
+    history.replace(destination);
     setAuthError('');
   })
   .catch((error) => {
@@ -59,6 +62,8 @@ const useFirebase = () => {
   })
   .finally (() => setIsLoading(false));
     }
+
+     //-----------------Login with google-------------------
 
     const signInWithGoogle = (location, navigate) => {
       setIsLoading(true);  
@@ -92,7 +97,7 @@ const useFirebase = () => {
     }, [auth])
 
     useEffect(() => {
-      fetch(`https://vast-falls-30243.herokuapp.com/users/${user.email}`)
+      fetch(`http://localhost:5000/users/${user.email}`)
       .then(res => res.json())
       .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -107,9 +112,9 @@ const useFirebase = () => {
           .finally(() => setIsLoading(false));
     }
 
-    const saveUser = (email, displayName, method) =>{
-      const user = {email, displayName};
-      fetch('https://vast-falls-30243.herokuapp.com/users', {
+    const saveUser = (email, password, displayName, method) =>{
+      const user = {email, password, displayName};
+      fetch('http://localhost:5000/users', {
         method: method, 
         headers: {
           'content-type' : 'application/json'
